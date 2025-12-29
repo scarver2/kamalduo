@@ -1,29 +1,22 @@
 # [Vultr](https://www.vultr.com)
 
-TODO: Add Vultr documentation
-
 ## Prerequisites
 
-1. Get your [Vultr API key](https://my.vultr.com/settings/#settingsapi)
-
-```bash
-export VULTR_API_KEY='<api_key_from_vultr_account>'
-vultr-cli account info
-```
-
-2. Add your [SSH key](https://my.vultr.com/settings/#settingsssh)
-
-```bash
-vultr-cli ssh-key create --name "my-ssh-key" --key "$(cat ~/.ssh/id_ed25519.pub)"
-```
-
-3. Setup [Vultr CLI](https://github.com/vultr/vultr-cli)
-
-Install the Vultr CLI
-```bash
-brew tap vultr/vultr-cli
-brew install vultr-cli
-```
+1. Sign up for a [Vultr account](https://www.vultr.com/?ref=6814730)
+2. Install the [Vultr CLI](https://github.com/vultr/vultr-cli)
+    ```bash
+    brew tap vultr/vultr-cli
+    brew install vultr-cli
+    ```
+3. Get your [Vultr API key](https://my.vultr.com/settings/#settingsapi)
+    ```bash
+    export VULTR_API_KEY='<api_key_from_vultr_account>'
+    vultr-cli account info
+    ```
+4. Add your [SSH key](https://my.vultr.com/settings/#settingsssh)
+    ```bash
+    vultr-cli ssh-key create --name "my-ssh-key" --key "$(cat ~/.ssh/id_ed25519.pub)"
+    ```
 
 ## Create a Vultr instance (aka server)
 
