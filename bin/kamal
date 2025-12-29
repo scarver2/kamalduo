@@ -1,5 +1,30 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env bash
+set -euo pipefail
 
-# bootstrap Kamal with dotenv's environment variables
-require "dotenv/load"
-exec "kamal", *ARGV
+ENV_NAME="${1:-local}"
+shift || true
+
+ENV_FILE=".env.${ENV_NAME}"
+
+if [[ ! -f "${ENV_FILE}" ]]; then
+  echo "ERROR: ${ENV_FILE} not found."
+  echo "Usage: bin/kamal [local|production] <kamal args...>"
+  echo "Example: bin/kamal deploy"
+  echo "         bin/kamal production deploy"
+  exit 1
+fi
+
+if command -v dotenv >/dev/null 2>&1; then
+  exec dotenv -f "${ENV_FILE}" -- kamal "$@"
+fi
+
+if [[ -x "./bin/dotenv" ]]; then
+  exec ./bin/dotenv -f "${ENV_FILE}" -- kamal "$@"
+fi
+
+# Fallback: source .env file (simple KEY=VALUE lines only; no export, no spaces, no quotes)
+set -a
+# shellcheck disable=SC1090
+source "${ENV_FILE}"
+set +a
+exec kamal "$@"
