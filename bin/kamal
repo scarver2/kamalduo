@@ -1,6 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+# ---- Ensure Kamal is installed ---------------------------------------------
+if ! command -v kamal >/dev/null 2>&1; then
+  echo "Kamal not found. Installing rubygem…"
+  gem install kamal
+fi
+
+# ---- Load environment variables ---------------------------------------------
 ENV_NAME="${1:-local}"
 shift || true
 
