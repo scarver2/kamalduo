@@ -1,26 +1,53 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# ---- Ensure Kamal is installed ---------------------------------------------
+# Ensure Kamal is installed
 if ! command -v kamal >/dev/null 2>&1; then
   echo "Kamal not found. Installing rubygem…"
   gem install kamal
 fi
 
-# ---- Load environment variables ---------------------------------------------
-ENV_NAME="${1:-local}"
-shift || true
+# Determine environment
+DEFAULT_ENV="local"
+
+ENV_NAME="${DEFAULT_ENV}"
+FIRST_ARG="${1:-}"
+
+# Treat first arg as env only if it's one of our known envs
+# OR if a matching .env.<name> file exists.
+if [[ -n "${FIRST_ARG}" ]]; then
+  if [[ "${FIRST_ARG}" == "local" || "${FIRST_ARG}" == "production" ]]; then
+    ENV_NAME="${FIRST_ARG}"
+    shift
+  elif [[ -f ".env.${FIRST_ARG}" ]]; then
+    ENV_NAME="${FIRST_ARG}"
+    shift
+  fi
+fi
 
 ENV_FILE=".env.${ENV_NAME}"
 
+# Special helper: print resolved env + file
+if [[ "${1:-}" == "env" ]]; then
+  echo "env=${ENV_NAME}"
+  echo "file=${ENV_FILE}"
+  exit 0
+fi
+
 if [[ ! -f "${ENV_FILE}" ]]; then
   echo "ERROR: ${ENV_FILE} not found."
-  echo "Usage: bin/kamal [local|production] <kamal args...>"
-  echo "Example: bin/kamal deploy"
-  echo "         bin/kamal production deploy"
+  echo
+  echo "Usage:"
+  echo "  bin/kamal [env] <kamal args...>"
+  echo
+  echo "Examples:"
+  echo "  bin/kamal deploy"
+  echo "  bin/kamal production deploy"
+  echo "  bin/kamal staging deploy   # if .env.staging exists"
   exit 1
 fi
 
+# ---- load environment + exec kamal ------------------------------------------
 if command -v dotenv >/dev/null 2>&1; then
   exec dotenv -f "${ENV_FILE}" -- kamal "$@"
 fi
@@ -29,9 +56,10 @@ if [[ -x "./bin/dotenv" ]]; then
   exec ./bin/dotenv -f "${ENV_FILE}" -- kamal "$@"
 fi
 
-# Fallback: source .env file (simple KEY=VALUE lines only; no export, no spaces, no quotes)
+# Fallback: source .env file (simple KEY=VALUE only)
 set -a
 # shellcheck disable=SC1090
 source "${ENV_FILE}"
 set +a
+
 exec kamal "$@"

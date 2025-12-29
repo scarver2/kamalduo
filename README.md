@@ -8,20 +8,30 @@ gem install kamal
 bundle install
 ```
 
-TODO: Add application documentation
-```bash
-kamal init
+Set the environment variables for your project using the `.env.template` file.
+Use `bin/kamal` to access all Kamal commands using the environment variables.
 
+A `.env.local` file is provided to test docker, kamal, and the Sinatra Rack application locally.
+
+Recommended to add the following to your local `/etc/hosts` file to test locally:
+```bash
+grep -qE '^\s*127\.0\.0\.1\s+kamal2\.local$' /etc/hosts \
+  || echo '127.0.0.1  kamal2.local' | sudo tee -a /etc/hosts > /dev/null
 ```
 
 ## Health Check
-TODO: Instructions for health check
+Our application has a health check endpoint at `/healthz` that Kamal will use to verify the application is running.
+
 ```bash
-curl -i http://localhost:9292/healthz
+curl -i http://localhost:3000/healthz
 ```
 
 ## Debugging 
 
+TODO: Instructions for debugging
+```bash
+# TODO: debugging commands
+```
 ### Locally
 TODO: Instructions for local debugging
 ```bash
