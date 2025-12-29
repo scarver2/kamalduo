@@ -34,10 +34,10 @@ PLATFORMS
   x86_64-darwin-25
 
 DEPENDENCIES
-  dotenv
+  dotenv (~> 3.2)
   puma (~> 7.1)
   rackup (~> 2.3)
-  sinatra
+  sinatra (~> 4.2)
 
 CHECKSUMS
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
