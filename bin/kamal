@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+
+# bootstrap Kamal with dotenv's environment variables
+require "dotenv/load"
+exec "kamal", *ARGV
