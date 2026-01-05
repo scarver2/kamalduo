@@ -1,13 +1,14 @@
 # Name of your application. Used to uniquely configure containers.
-service: my-app
+service: kamalduo
 
 # Name of the container image.
-image: my-user/my-app
+image: a1web/kamalduo
 
 # Deploy to these servers.
 servers:
   web:
-    - 192.168.0.1
+    # - 192.168.0.1
+    - kamalduo.a1webconsulting.com
   # job:
   #   hosts:
   #     - 192.168.0.1
@@ -19,7 +20,7 @@ servers:
 # Note: If using Cloudflare, set encryption mode in SSL/TLS setting to "Full" to enable CF-to-app encryption.
 proxy:
   ssl: true
-  host: app.example.com
+  host: kamalduo.a1webconsulting.com
   # Proxy connects to your container on port 80 by default.
   # app_port: 3000
 
