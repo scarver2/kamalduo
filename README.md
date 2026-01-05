@@ -48,6 +48,7 @@ TODO: Instructions for remote debugging
 
 ## Documentation
 
+```
 docs/
 |-- [devops](docs/devops)
 |    L--- [digital_ocean](docs/devops/digital_ocean.md)
@@ -58,7 +59,7 @@ docs/
 |-- [docker](docs/docker.md)
 |-- [github_actions](docs/github_actions.md)
 L-- [kamal](docs/kamal.md)
-
+```
 Developed using Kamal 2.10.1.
 
 ## Credits
