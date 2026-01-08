@@ -72,4 +72,4 @@ Developed using [Kamal 2.10.1](https://github.com/basecamp/kamal/releases/tag/v2
 
 ## Credits
 
-@2026 Stan Carver II, a1webconsulting.com
+@2026 Stan Carver II, [A1 Web Consulting](https://a1webconsulting.com)
