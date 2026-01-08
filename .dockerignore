@@ -1,0 +1,18 @@
+.env.local
+.env.template
+.git
+.github
+.gitignore
+.rspec
+.rubocop.yml
+.rubocop_todo.yml
+.vscode
+
+/log/*
+/spec/*
+/tmp/*
+
+# docs
+/docs/*
+/LICENSE
+/*.md
