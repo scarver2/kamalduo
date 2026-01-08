@@ -1,4 +1,4 @@
-# Sinatra Kamal Duo
+# [Sinatra Kamal Duo](https://github.com/scarver2/kamalduo)
 
 This repo demonstrates deploying a [Sinatra Rack application](https://sinatrarb.com) using [Kamal 2](https://kamal-deploy.org). Instructions are included how to deploy to popular VPSes.
 
