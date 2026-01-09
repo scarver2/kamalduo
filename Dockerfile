@@ -1,13 +1,13 @@
+# Set Ruby version for the container
 ARG RUBY_VERSION=4.0.0
 FROM ruby:$RUBY_VERSION-slim
 
+# Set Ruby environment variables
 ARG BUNDLE_PATH=/usr/local/bundle
 ARG BUNDLER_VERSION=4.0.3
 ARG RACK_ENV=production
 ARG BUNDLE_WITHOUT="development:test"
 ARG PORT=9292 # rackup default
-
-WORKDIR /app
 
 # Install system dependencies
 RUN apt-get update -y \
@@ -20,11 +20,11 @@ RUN apt-get update -y \
   /usr/share/man \
   /var/cache/apt/archives
 
-# Create app directory
+# Set working directory
 WORKDIR /app
 
-# Create app log and tmp directories
-RUN mkdir -p /app/log /app/tmp
+# Create log and tmp directories (for future use)
+# RUN mkdir -p /app/log /app/tmp
 
 # Set app environment variables
 ENV RACK_ENV=${RACK_ENV} \
