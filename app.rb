@@ -5,10 +5,10 @@ require 'sinatra/base'
 # The entry point for the application
 class App < Sinatra::Base
   get '/' do
-    'Hello World'
+    'Howdy World!'
   end
 
   get '/healthz' do
-    'ok'
+    'OK'
   end
 end
