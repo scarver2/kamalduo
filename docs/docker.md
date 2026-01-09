@@ -11,17 +11,7 @@ brew install docker
 
 ## Dockerfile
 
-```dockerfile
-FROM ruby:2.7.2
-RUN apt-get update -qq && apt-get install -y nodejs
-RUN gem install bundler
-WORKDIR /app
-COPY Gemfile /app/Gemfile
-COPY Gemfile.lock /app/Gemfile.lock
-RUN bundle install
-COPY . /app
-CMD ["bundle", "exec", "rackup", "-p", "9292", "-E", "development"]
-```
+View file here: [Dockerfile](Dockerfile)
 
 ## Build
 
@@ -38,12 +28,16 @@ docker tag kamalduo:latest "gcr.io/$PROJECT_ID/kamalduo:latest"
 docker push "gcr.io/$PROJECT_ID/kamalduo:latest"
 ```
 
-
 # Local Operation
 
-## Single Container via Docker Run command
+## Launch Container via Docker Run command
 ```bash
 docker run -it --rm --name kamalduo -p 3000:3000 kamalduo
+```
+
+## Launch Container via Docker Compose command
+```bash
+docker compose up --build
 ```
 
 ## Multi Container via Docker Compose

@@ -1,0 +1,13 @@
+services:
+  web:
+    build: .
+    volumes:
+      - .:/app
+    ports:
+      - "9292:9292"
+    healthcheck:
+      test: [ "CMD", "curl", "-f", "http://localhost:9292/healthz" ]
+      interval: 3s
+      timeout: 5s
+      retries: 3
+      start_period: 10s

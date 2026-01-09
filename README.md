@@ -1,66 +1,60 @@
-# Sinatra Kamal Duo
+# [Sinatra Kamal Duo](https://github.com/scarver2/kamalduo)
 
-This is a Sinatra Rack application that uses Kamal 2 to deploy to a VPS.
+This repo demonstrates deploying a [Sinatra Rack application](https://sinatrarb.com) using [Kamal 2](https://kamal-deploy.org). Instructions are included how to deploy to popular VPSes.
 
 ## Prerequisites
 
-Install Kamal 2 gem globally. Don't use bundler.
+Install Kamal 2 gem globally.
 ```bash
 gem install kamal
+```
+
+## Instructions
+
+Install the application's RubyGem dependecies.
+```bash
 bundle install
 ```
 
 Set the environment variables for your project using the `.env.template` file.
 Use `bin/kamal` to access all Kamal commands using the environment variables.
 
-A `.env.local` file is provided to test docker, kamal, and the Sinatra Rack application locally.
+A `.env.local` file is provided to test Docker, Kamal, and the Sinatra Rack application locally.
 
-Recommended to add the following to your local `/etc/hosts` file to test locally:
+### Recommendation
+Recommended to add a `kamalduo.local` entry to your local `/etc/hosts` file to test locally:
 ```bash
 grep -qE '^\s*127\.0\.0\.1\s+kamalduo\.local$' /etc/hosts \
   || echo '127.0.0.1  kamalduo.local' | sudo tee -a /etc/hosts > /dev/null
 ```
 
-## Health Check
+## The Kamal Advantage
+### Health Check
 Our application has a health check endpoint at `/healthz` that Kamal will use to verify the application is running.
 
 ```bash
-curl -i http://localhost:3000/healthz
-```
-
-## Debugging 
-
-TODO: Instructions for debugging
-```bash
-# TODO: debugging commands
-```
-### Locally
-TODO: Instructions for local debugging
-```bash
-# TODO: commands
-```
-
-### Remotely
-TODO: Instructions for remote debugging
-```bash
-# TODO: commands
+curl -i http://localhost:9292/healthz
 ```
 
 ## Documentation
 
+```bash
 docs/
 |-- [devops](docs/devops)
-|    L--- [digital_ocean](docs/devops/digital_ocean.md)
+|    L-- [GitHub Actions](docs/devops/github_actions.md)
 |-- [hosting](docs/hosting)
-|    L--- [nginx](docs/hosting/nginx.md)
+|    |-- [Digital Ocean](docs/devops/digital_ocean.md)
+|    |-- [Hetzner](docs/devops/hetzner.md)
+|    L-- [Vultr](docs/devops/vultr.md)
 |-- [secrets](docs/secrets)
-|    L--- [bitwarden](docs/secrets/bitwarden.md)
-|-- [docker](docs/docker.md)
-|-- [github_actions](docs/github_actions.md)
-L-- [kamal](docs/kamal.md)
+|    L-- [Bitwarden](docs/secrets/bitwarden.md)
+|-- [Docker](docs/docker.md)
+|-- [Kamal](docs/kamal.md)
+L-- [NGINX](docs/hosting/nginx.md)
+```
 
-Developed using Kamal 2.10.1.
+Developed using [Kamal 2.10.1](https://github.com/basecamp/kamal/releases/tag/v2.10.1).
 
 ## Credits
 
-@2026 Stan Carver II, a1webconsulting.com
+@2026 [Stan Carver II](http://stancarver.com), [A1 Web Consulting](https://a1webconsulting.com)

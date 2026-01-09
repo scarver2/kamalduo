@@ -2,7 +2,7 @@
 
 source 'https://rubygems.org'
 
-ruby '4.0.0'
+ruby file: ".ruby-version"
 
 gem 'dotenv', '~> 3.2', require: false
 gem 'puma', '~> 7.1'
