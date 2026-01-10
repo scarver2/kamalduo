@@ -30,7 +30,7 @@ grep -qE '^\s*127\.0\.0\.1\s+kamalduo\.local$' /etc/hosts \
 
 ## The Kamal Advantage
 ### Health Check
-Our application has a health check endpoint at `/healthz` that Kamal will use to verify the application is running.
+KamalDuo demonstrates a health check endpoint at `/healthz` that Kamal will use to verify the application is running.
 
 ```bash
 curl -i http://localhost:9292/healthz
@@ -38,20 +38,18 @@ curl -i http://localhost:9292/healthz
 
 ## Documentation
 
-```bash
-docs/
-|-- [devops](docs/devops)
-|    L-- [GitHub Actions](docs/devops/github_actions.md)
-|-- [hosting](docs/hosting)
-|    |-- [Digital Ocean](docs/devops/digital_ocean.md)
-|    |-- [Hetzner](docs/devops/hetzner.md)
-|    L-- [Vultr](docs/devops/vultr.md)
-|-- [secrets](docs/secrets)
-|    L-- [Bitwarden](docs/secrets/bitwarden.md)
-|-- [Docker](docs/docker.md)
-|-- [Kamal](docs/kamal.md)
-L-- [NGINX](docs/hosting/nginx.md)
-```
+docs/<br />
+|-- [devops](docs/devops)<br />
+|    L-- [GitHub Actions](docs/devops/github_actions.md)<br />
+|-- [hosting](docs/hosting)<br />
+|    |-- [Digital Ocean](docs/devops/digital_ocean.md)<br />
+|    |-- [Hetzner](docs/devops/hetzner.md)<br />
+|    L-- [Vultr](docs/devops/vultr.md)<br />
+|-- [secrets](docs/secrets)<br />
+|    L-- [Bitwarden](docs/secrets/bitwarden.md)<br />
+|-- [Docker](docs/docker.md)<br />
+|-- [Kamal](docs/kamal.md)<br />
+L-- [NGINX](docs/hosting/nginx.md)<br />
 
 Developed using [Kamal 2.10.1](https://github.com/basecamp/kamal/releases/tag/v2.10.1).
 
